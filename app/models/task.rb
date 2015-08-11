@@ -1,5 +1,4 @@
 class Task < ActiveRecord::Base
-  # before_save :validate_start_date
   validates :title, presence: true
   validate :start_date_cannot_be_in_the_past
   validate :due_date_cannot_be_in_the_past
