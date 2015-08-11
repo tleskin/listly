@@ -17,4 +17,16 @@ class Task < ActiveRecord::Base
       errors.add(:due_date, "can't be in the past")
     end
   end
+
+  def update_status
+    if complete?
+      update(status: 'incomplete')
+    else
+      update(status: 'complete')
+    end
+  end
+
+  def complete?
+    status == 'complete'
+  end
 end
