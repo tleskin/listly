@@ -31,11 +31,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  gem 'factory_girl_rails'
   gem 'pry'
   gem 'rspec-rails'
   gem 'bullet'
   gem 'capybara'
   gem 'launchy'
-  # Access an IRB console on exception pages or by using <%= console %> in views
+  gem 'database_cleaner'
   gem 'web-console', '~> 2.0'
 end

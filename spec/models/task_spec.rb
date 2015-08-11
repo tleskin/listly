@@ -9,7 +9,8 @@ RSpec.describe Task, type: :model do
     Task.create(title: "Title",
                 body: "Body",
                 status: "incomplete",
-                due_date: "August 14, 2015",
+                start_date: "August 15, 2015",
+                due_date: "August 20, 2015",
                 list_id: list.id )
   }
 
