@@ -2,7 +2,11 @@ body {
   text-align: center;
 }
 
-.task {;
+.list {
+  margin: 50px;
+}
+
+.task {
   margin: 50px;
 }
 

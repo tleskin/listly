@@ -17,8 +17,28 @@ class ListsController < ApplicationController
     end
   end
 
+  def edit
+   @list = List.find(params[:id])
+  end
+
+  def update
+    @list = List.find(params[:id])
+    if @list.update(list_params)
+     redirect_to root_path
+    else
+      flash[:error] = @list.errors.full_messages.join(", ")
+      render :edit
+    end
+  end
+
   def show
     @list = List.find(params[:id])
+  end
+
+  def destroy
+    @list = List.find(params[:id])
+    @list.destroy
+    redirect_to root_path
   end
 
   private
