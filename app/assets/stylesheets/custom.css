@@ -1,3 +1,16 @@
 body {
   text-align: center;
 }
+
+.task {;
+  margin: 50px;
+}
+
+div.alert {
+}
+
+div.flash.error {
+ color: red;
+ text-align: center;
+
+}

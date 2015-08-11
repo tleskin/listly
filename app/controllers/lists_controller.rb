@@ -8,11 +8,11 @@ class ListsController < ApplicationController
   end
 
   def create
-    list = List.new(list_params)
-    if list.save
+    @list = List.new(list_params)
+    if @list.save
       redirect_to root_path
     else
-      @list = List.new
+      flash.now[:error] = @list.errors.full_messages.join(", ")
       render :new
     end
   end

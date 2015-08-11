@@ -9,13 +9,13 @@ class TasksController < ApplicationController
       redirect_to @task.list
     else
       render :new
-      flash[:error] = "Invalid Task"
+      flash.now[:error] = @task.errors.full_messages.join(", ")
     end
   end
 
   private
 
   def task_params
-    params.require(:task).permit(:title, :body, :due_date, :list_id)
+    params.require(:task).permit(:title, :body, :start_date, :due_date, :list_id)
   end
 end
