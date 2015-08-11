@@ -1,2 +1,9 @@
+<h1><%= @list.title %></h1>
 
-<%= @list.title %>
+<% @list.tasks.each do |task| %>
+  <p><%= task.title %></p>
+  <p><%= task.body %></p>
+  <p><%= task.due_date %></p>
+<% end  %>
+
+<%= link_to "Add Task", new_list_task_path(@list.id) %>
