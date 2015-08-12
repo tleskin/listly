@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Listly</title>
+  <title>List.ly</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-<% flash.each do |type, message| %>
-  <div class="alert flash <%= type %>">
-    <%= message %>
-  </div>
-<% end %>
+  <body>
+    <%= render "layouts/navbar"%>
 
-<h1>Welcome to List.ly</h1>
+    <% flash.each do |type, message| %>
+      <div class="alert flash <%= type %>">
+        <%= message %>
+      </div>
+    <% end %>
 
-<%= yield %>
+    <h1>Welcome to List.ly</h1>
 
-</body>
+    <%= yield %>
+
+  </body>
 </html>
