@@ -42,9 +42,17 @@ class TasksController < ApplicationController
     respond_with task, location: "/lists/#{task.list_id}"
   end
 
+  def remove_image
+    task = Task.find(params[:task_id])
+    list = task.list
+    task.image = nil
+    task.save!
+    redirect_to list
+  end
+
   private
 
   def task_params
-    params.require(:task).permit(:title, :body, :start_date, :due_date, :list_id)
+    params.require(:task).permit(:title, :body, :start_date, :due_date, :image, :list_id)
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150811184713) do
+ActiveRecord::Schema.define(version: 20150812045929) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,12 +25,16 @@ ActiveRecord::Schema.define(version: 20150811184713) do
   create_table "tasks", force: :cascade do |t|
     t.string   "title"
     t.string   "body"
-    t.string   "status",     default: "incomplete"
+    t.string   "status",             default: "incomplete"
     t.date     "due_date"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
     t.integer  "list_id"
     t.date     "start_date"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "tasks", ["list_id"], name: "index_tasks_on_list_id", using: :btree
