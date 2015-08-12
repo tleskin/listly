@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   resources :lists do
     resources :tasks
   end
+
+  post '/change', to: 'tasks#change_status'
 end
