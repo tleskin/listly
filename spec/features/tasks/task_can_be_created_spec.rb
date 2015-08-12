@@ -8,7 +8,10 @@ RSpec.describe "Tasks", type: :feature do
 
     visit root_path
 
-    click_link_or_button('List 1')
+    within(".list") do
+      click_link_or_button('List 1')
+    end
+    
     click_link_or_button('Add Task')
 
     fill_in('task[title]', with: 'Title')

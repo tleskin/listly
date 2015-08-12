@@ -14,4 +14,8 @@ RSpec.describe List, type: :model do
     list.title = ""
     expect(list).to_not be_valid
   end
+
+  it "has a relationship with tasks" do
+    expect(list).to respond_to(:tasks)
+  end
 end

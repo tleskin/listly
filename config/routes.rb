@@ -7,5 +7,4 @@ Rails.application.routes.draw do
   end
 
   post '/change', to: 'tasks#change_status'
-
 end
