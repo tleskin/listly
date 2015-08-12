@@ -1,5 +1,4 @@
 class Task < ActiveRecord::Base
-  # before_save :validate_start_date
   validates :title, presence: true
   validate :start_date_cannot_be_in_the_past
   validate :due_date_cannot_be_in_the_past
@@ -16,5 +15,17 @@ class Task < ActiveRecord::Base
     if (due_date < Date.today)
       errors.add(:due_date, "can't be in the past")
     end
+  end
+
+  def update_status
+    if complete?
+      update(status: 'incomplete')
+    else
+      update(status: 'complete')
+    end
+  end
+
+  def complete?
+    status == 'complete'
   end
 end

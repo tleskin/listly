@@ -1,4 +1,6 @@
 class TasksController < ApplicationController
+  respond_to :json
+
   def new
     @task = Task.new
   end
@@ -33,6 +35,12 @@ class TasksController < ApplicationController
      @task.destroy
      redirect_to list
    end
+
+  def change_status
+    task = Task.find(params[:id])
+    task.update_status
+    respond_with task, location: "/lists/#{task.list_id}"
+  end
 
   private
 
