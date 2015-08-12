@@ -31,5 +31,9 @@ div.flash.error {
 }
 
 .complete {
-  display: none
+  display: none;
+}
+
+.show-future-tasks {
+  display: none;
 }

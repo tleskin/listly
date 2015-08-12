@@ -30,4 +30,8 @@ class Task < ActiveRecord::Base
   def complete?
     status == 'complete'
   end
+
+  def the_past?
+    true if self.start_date.present? && self.start_date <= Date.today
+  end
 end
