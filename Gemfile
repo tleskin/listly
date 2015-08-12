@@ -12,6 +12,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'paperclip'
 gem 'responders'
 gem 'rails_12factor', group: :production
+gem 'figaro'
 
 group :development, :test do
   gem 'factory_girl_rails'

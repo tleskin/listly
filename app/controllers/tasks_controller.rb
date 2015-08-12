@@ -8,6 +8,7 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     if @task.save
+      new_mailer(@task)
       redirect_to @task.list
     else
       render :new
@@ -22,6 +23,7 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
     if @task.update(task_params)
+      update_mailer(@task)
       redirect_to @task.list
     else
       flash[:error] = @task.errors.full_messages.join(", ")
@@ -52,6 +54,22 @@ class TasksController < ApplicationController
     task.image = nil
     task.save!
     redirect_to list
+  end
+
+  def new_mailer(task)
+    if task.title.include?("/cc")
+      split = task.title.split("/cc")
+      email = split.last.delete!(" ")
+      UserMailer.new_task(email, task).deliver_now
+    end
+  end
+
+  def update_mailer(task)
+    if task.title.include?("/cc")
+      split = task.title.split("/cc")
+      email = split.last.delete!(" ")
+      UserMailer.update_task(email, task).deliver_now
+    end
   end
 
   private
