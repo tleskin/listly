@@ -33,6 +33,7 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
+    @titles = @list.tasks.each {|task| task.title}
   end
 
   def destroy

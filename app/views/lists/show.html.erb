@@ -1,23 +1,20 @@
 <h1><%= @list.title %></h1>
 
-<%= link_to "Add Task", new_list_task_path(@list.id) %>
-<br>
+<%= render "lists/filter"%>
 
 <h1>Tasks:</h1>
-<p><button class="show-all">Show/Hide Complete Tasks</button></p>
-<div class="each-task">
+  <div class="each-task">
 <% @list.tasks.each do |task| %>
-  <div class="task" >
-    <div class="<%= task.status %>">
-      <h3><%= task.title %></h3>
-      <p><%= task.body %></p>
-      <p>Start Date: <%= task.start_date %></p>
-      <p>Due Date: <%= task.due_date %></p>
-      <p>Status: <h4><%= task.status %></h4></p>
-      <p><button class="change-status" data-change-status="<%= task.id %>" >Change Status</button></p>
-      <p><%= link_to "Edit Task", edit_list_task_path(@list.id, task.id)  %></p>
-      <p><%= link_to "Delete Task", list_task_path(@list.id, task.id), method: :delete %></p>
-      </div>
-  </div>
+    <div class="task" id=<%= task.id.to_s %> >
+      <div class="<%= task.status %>">
+        <h3>Title: <span class="title"><%= task.title %></span></h3>
+        <p>Body: <span class="description"><%= task.body %></span></p>
+        <p>Start Date: <span class="start-date"><%= task.start_date %></span></p>
+        <p>Due Date: <span class="due-date"><%= task.due_date %></span></p>
+        <p><button class="change-status" data-change-status="<%= task.id %>" >Status:<%= task.status %></button></p>
+        <p><%= link_to "Edit Task", edit_list_task_path(@list.id, task.id)  %></p>
+        <p><%= link_to "Delete Task", list_task_path(@list.id, task.id), method: :delete %></p>
+        </div>
+    </div>
 <% end  %>
-</div>
+  </div>
