@@ -7,26 +7,28 @@
 <% @list.tasks.each do |task| %>
     <div class="task">
       <% if !task.the_past? %>
-      <div class="<%= task.status %> show-future-tasks">
-        <p><%= image_tag task.image.url(:thumb) %></p>
-        <p><%= button_to "Remove Image", list_task_remove_path(list_id: task.list_id, task_id: task.id), method: :delete %></button></p>
-        <h3>Title: <span class="title"><%= task.title %></span></h3>
-        <p>Body: <span class="description"><%= task.body %></span></p>
-        <p>Start Date: <span class="start-date"><%= task.start_date %></span></p>
-        <p>Due Date: <span class="due-date"><%= task.due_date %></span></p>
-        <p><button class="change-status" data-change-status="<%= task.id %>" >Status:<%= task.status %></button></p>
-        <p><%= link_to "Edit Task", edit_list_task_path(@list.id, task.id)  %></p>
-        <p><%= link_to "Delete Task", list_task_path(@list.id, task.id), method: :delete %></p>
+      <div class="<%= task.status %>">
+        <div class="show-future-tasks">
+          <p><%= image_tag task.image.url(:thumb) %></p>
+          <p><%= button_to "Remove Image", list_task_remove_path(list_id: task.list_id, task_id: task.id), method: :delete %></button></p>
+          <h3>Title: <span class="title"><%= task.title %></span></h3>
+          <p>Body: <span class="description"><%= task.body %></span></p>
+          <p>Start Date: <span class="start-date"><%= task.start_date %></span></p>
+          <p>Due Date: <span class="due-date"><%= task.due_date %></span></p>
+          <p><a href="#" class="task-status" data-id=<%=task.id %>><%= task.status %></a></p>
+          <p><%= link_to "Edit Task", edit_list_task_path(@list.id, task.id)  %></p>
+          <p><%= link_to "Delete Task", list_task_path(@list.id, task.id), method: :delete %></p>
+        </div>
       </div>
       <% else  %>
-      <div class="task.status %>">
+      <div class="<%= task.status %>">
         <p><%= image_tag task.image.url(:thumb) %></p>
         <p><%= button_to "Remove Image", list_task_remove_path(list_id: task.list_id, task_id: task.id), method: :delete %></button></p>
         <h3>Title: <span class="title"><%= task.title %></span></h3>
         <p>Body: <span class="description"><%= task.body %></span></p>
         <p>Start Date: <span class="start-date"><%= task.start_date %></span></p>
         <p>Due Date: <span class="due-date"><%= task.due_date %></span></p>
-        <p><button class="change-status" data-change-status="<%= task.id %>" >Status:<%= task.status %></button></p>
+        <p><a href="#" class="task-status" data-id=<%=task.id %>><%= task.status %></a></p>
         <p><%= link_to "Edit Task", edit_list_task_path(@list.id, task.id)  %></p>
         <p><%= link_to "Delete Task", list_task_path(@list.id, task.id), method: :delete %></p>
       </div>

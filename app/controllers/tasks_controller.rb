@@ -37,9 +37,13 @@ class TasksController < ApplicationController
    end
 
   def change_status
-    task = Task.find(params[:id])
-    task.update_status
-    respond_with task, location: "/lists/#{task.list_id}"
+    task = Task.find(params[:task_id])
+    task.status = params[:status]
+    if task.save
+      respond_with task
+    else
+      respond_with({errors => task.errors}, :status => 422, :location => "/lists/#{task.list_id}")
+    end
   end
 
   def remove_image

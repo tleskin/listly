@@ -10,7 +10,7 @@ $(document).ready(function() {
     }
 
     $('.name-search').on('keyup', function() {
-      var searchTerm = new RegExp($(".name-search").val());
+      var searchTerm = new RegExp($(".name-search").val(), "i");
       $('.each-task').children().each(function(index, element) {
         if (findMatch(element, searchTerm)) {
           $(element).show();
